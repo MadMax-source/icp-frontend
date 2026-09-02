@@ -12,23 +12,26 @@ export function Hero() {
       <div className="absolute -top-40 left-1/2 -z-0 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs">
-            <span className="size-1.5 rounded-full bg-success" />
-            <span className="font-mono text-muted-foreground">Live on {NETWORK.name} testnet</span>
+          <div className="animate-float mx-auto inline-flex animate-in items-center gap-2 rounded-full border border-primary/20 bg-secondary/50 px-3 py-1 text-xs fade-in slide-in-from-bottom-3 duration-700">
+            <span className="relative flex size-1.5">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-success" />
+            </span>
+            <span className="font-mono text-muted-foreground">Live on {NETWORK.name} mainnet</span>
           </div>
 
-          <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
+          <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 [animation-delay:100ms] [animation-fill-mode:both] sm:text-6xl">
             Borrow{' '}
             <span className="text-primary">ICFT</span> against your crypto collateral
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-700 [animation-delay:220ms] [animation-fill-mode:both] sm:text-lg">
             ICFT is a decentralized, non-custodial lending protocol. Supply supported assets as
             collateral and borrow ICFT against your position — all settled on-chain, with the smart
             contracts as the single source of truth.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 [animation-delay:340ms] [animation-fill-mode:both] sm:flex-row">
             <Link href="/dashboard" className={cn(buttonVariants({ size: 'lg' }), 'w-full sm:w-auto')}>
               Launch App
               <ArrowRight className="size-4" />
@@ -42,7 +45,7 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 flex items-center justify-center gap-6">
+          <div className="mt-10 flex items-center justify-center gap-6 animate-in fade-in duration-1000 [animation-delay:480ms] [animation-fill-mode:both]">
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
                 <AssetIcon symbol="ETH" className="ring-2 ring-background" />
