@@ -10,6 +10,7 @@ import { PositionPanel } from '@/components/dashboard/position-panel'
 import { CollateralBreakdown } from '@/components/dashboard/collateral-breakdown'
 import { ActionModal, type ActionType } from '@/components/dashboard/action-modal'
 import { Button } from '@/components/ui/button'
+import { Reveal } from '@/components/reveal'
 
 const ACTIONS: { key: Exclude<ActionType, null>; label: string; icon: typeof HandCoins; variant: 'default' | 'secondary' | 'outline' }[] = [
   { key: 'deposit', label: 'Deposit Collateral', icon: ArrowDownToLine, variant: 'default' },
@@ -38,34 +39,44 @@ export function DashboardClient() {
       <Header />
 
       <div className="mt-6 space-y-6">
-        <NetworkBar />
+        <Reveal direction="down">
+          <NetworkBar />
+        </Reveal>
 
         {/* Quick actions */}
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {ACTIONS.map((a) => (
-            <Button
-              key={a.key}
-              size="lg"
-              variant={a.variant}
-              className="h-auto justify-start gap-2 py-3"
-              onClick={() => setAction(a.key)}
-            >
-              <a.icon className="size-4" />
-              {a.label}
-            </Button>
-          ))}
-        </div>
+        <Reveal direction="up">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {ACTIONS.map((a) => (
+              <Button
+                key={a.key}
+                size="lg"
+                variant={a.variant}
+                className="h-auto justify-start gap-2 py-3"
+                onClick={() => setAction(a.key)}
+              >
+                <a.icon className="size-4" />
+                {a.label}
+              </Button>
+            ))}
+          </div>
+        </Reveal>
 
-        <section>
-          <h2 className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            Protocol statistics
-          </h2>
-          <ProtocolStats />
-        </section>
+        <Reveal direction="up" delay={80}>
+          <section>
+            <h2 className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
+              Protocol statistics
+            </h2>
+            <ProtocolStats />
+          </section>
+        </Reveal>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <PositionPanel />
-          <CollateralBreakdown onAction={setAction} />
+          <Reveal direction="left">
+            <PositionPanel />
+          </Reveal>
+          <Reveal direction="right">
+            <CollateralBreakdown onAction={setAction} />
+          </Reveal>
         </div>
       </div>
 

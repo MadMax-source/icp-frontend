@@ -1,10 +1,11 @@
 import { Wallet, Coins, HandCoins, RotateCcw } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
 
 const STEPS = [
   {
     icon: Wallet,
     title: 'Connect wallet',
-    body: 'Connect a Sepolia-compatible wallet to interact with the protocol.',
+    body: 'Connect an Ethereum-compatible wallet to interact with the protocol.',
   },
   {
     icon: Coins,
@@ -31,16 +32,18 @@ export function HowItWorks() {
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {STEPS.map((s, i) => (
-          <div key={s.title} className="relative rounded-xl border border-border bg-card p-5">
-            <span className="font-mono text-xs text-muted-foreground">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <div className="mt-3 grid size-10 place-items-center rounded-lg border border-border bg-secondary/50 text-primary">
-              <s.icon className="size-5" />
+          <Reveal key={s.title} direction="up" delay={i * 90}>
+            <div className="hover-lift group relative h-full rounded-xl border border-border bg-card p-5 hover:border-primary/30">
+              <span className="font-mono text-xs text-muted-foreground">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="mt-3 grid size-10 place-items-center rounded-lg border border-border bg-secondary/50 text-primary transition-transform duration-300 group-hover:scale-110">
+                <s.icon className="size-5" />
+              </div>
+              <h3 className="mt-4 font-medium">{s.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
             </div>
-            <h3 className="mt-4 font-medium">{s.title}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

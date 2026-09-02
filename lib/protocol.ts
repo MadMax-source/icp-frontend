@@ -25,9 +25,9 @@ export interface CollateralAsset {
 }
 
 export const NETWORK = {
-  name: 'Sepolia',
-  chainId: 11155111,
-  explorer: 'https://sepolia.etherscan.io',
+  name: 'Ethereum',
+  chainId: 1,
+  explorer: 'https://etherscan.io',
 }
 
 export const CONTRACTS: { label: string; address: string }[] = [
